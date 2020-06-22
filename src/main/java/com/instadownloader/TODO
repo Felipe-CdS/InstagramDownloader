@@ -1,0 +1,5 @@
+melhorar o CodesLoader.timeSearch
+	buscar quantidade de fotos na pagina e usar como var I do loop no CodesLoader.loader
+
+	
+Salvar links das fotos que ficam "escondidas" junto com outras fotos nessa especide album por foto

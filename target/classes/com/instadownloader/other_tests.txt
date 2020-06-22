@@ -1,0 +1,24 @@
+File outputTest = new File("output_test.txt");
+    	String username = "raibolt_art";
+    	
+		URL url = new URL("https://www.instagram.com/" + username);
+		
+		BufferedWriter out = new BufferedWriter(new FileWriter(outputTest));
+		BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+		
+		String a;
+		while(( a = in.readLine()) != null) {
+			if(a.contains("shortcode")) {
+				int holder1 = a.indexOf("shortcode");
+				int holder2 = a.indexOf("dimensions");
+				System.out.println(a.substring(holder1, holder2));
+				out.write(a);
+				
+			}
+		}
+    	
+    	HttpResponse<JsonNode> response = Unirest.get("https://www.instagram.com/graphql/query/?query_hash=472f257a40c653c64c666ce877d59d2b")
+    			.header("accepted", "application/json")
+    			.asJson();
+    	
+    	System.out.println(response.getBody());
