@@ -22,3 +22,22 @@ File outputTest = new File("output_test.txt");
     			.asJson();
     	
     	System.out.println(response.getBody());
+    	
+    	
+    	$#################
+    	
+    	driver.get("https://www.instagram.com/p/CBl1Yq7pXAM/");
+    	File output = new File("output.html");
+    	BufferedWriter writer = new BufferedWriter(new FileWriter(output));
+    	
+    
+    	
+    	String a = driver.getPageSource();
+    	writer.write(driver.getPageSource());
+    	while(a.contains("1080w")) {
+    		int start = (a.indexOf("1080w") + 12);
+    		int end = (a.indexOf(">", start) - 1);
+    		System.out.println(CodesConsumer.ampRemover(a.substring(start, end)));
+    		a = a.substring(end);
+    	}
+    	

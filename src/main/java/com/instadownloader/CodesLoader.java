@@ -4,20 +4,33 @@ import java.util.ArrayList;
 
 public class CodesLoader {
 	
-	static int timerSearch() {
+	private static int photosCounter;
+	
+	static void timerSearch() {
 		
 		String pageSource = App.driver.getPageSource();
-		String timeString = pageSource.substring(pageSource.indexOf("seguindo,"), pageSource.indexOf("publicações"));	
-		System.out.println(timeString);
-		return 0;
+		String timeString;
+		
+		try {
+			int a = pageSource.indexOf("Instagram profile has");
+			int b = pageSource.indexOf("photos and videos.");
+			timeString = pageSource.substring(a+22, b-1);	
+		}
+		catch(StringIndexOutOfBoundsException e) {
+			int a = pageSource.indexOf("Following,");
+			int b = pageSource.indexOf("Posts ");
+			timeString = pageSource.substring(a+11, b-1);	
+		}
+
+		photosCounter = Integer.parseInt(timeString);
+		System.out.println(photosCounter);
 	}
 
 	static ArrayList<String> loader(ArrayList<String> codesList) throws Exception{
 		
-		
-		for(int i = 0; i < 315; i++) {
+		timerSearch();
 			
-	    	
+		for(int i = 0; i < photosCounter; i++) {
 			//get the page HTML
     		String pageSource = App.driver.getPageSource();
 	

@@ -1,7 +1,9 @@
 package com.instadownloader;
 
 public class CodesConsumer {
-
+	
+	//In this method we inject the photo code, enter in that photo URL and 
+	//search for the original photo link.
 	public static String linkSearch(String photoCode) {
 		System.out.println("Loading...");
 		
@@ -17,8 +19,10 @@ public class CodesConsumer {
 		return photoLink;
 	}
 	
-	public static String ampRemover(String photoLinkWithAmp) {
-		
+	
+	//It looks like HTML needs to write amp; after every "&" and this breaks the URL.
+	//This method removes every amp; from the original link making it usable.
+	public static String ampRemover(String photoLinkWithAmp) {	
 		String temp = photoLinkWithAmp.replace("amp;", "");
 		return temp;
 	}

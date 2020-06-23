@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 
 public class Downloader {
 
-	public static void download(String link, int counter) throws Exception{
+	public static void download(String link, int counter) throws Exception {
 		System.out.println("Loading...");
 		
 		File imageFile = new File(counter + ".jpg");
@@ -19,5 +19,4 @@ public class Downloader {
 		
 		ImageIO.write(image, "jpg", imageFile);
 	}
-	
 }
